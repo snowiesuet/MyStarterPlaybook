@@ -13,7 +13,7 @@ using NinjaTrader.NinjaScript.Indicators;
 
 namespace NinjaTrader.NinjaScript.Strategies
 {
-	public class ATRManagerV1 : Strategy
+	public class MyStartPlaybook : Strategy
 	{
 		private EMA emaFast;
 		private EMA emaSlow;
@@ -32,7 +32,7 @@ namespace NinjaTrader.NinjaScript.Strategies
 		{
 			if (State == State.SetDefaults)
 			{
-				Name = "ATRManagerV1";
+				Name = "MyStartPlaybook";
 				Description = "Stage 1 - EMA Cross";
 
 				Calculate = Calculate.OnBarClose;
@@ -104,7 +104,10 @@ namespace NinjaTrader.NinjaScript.Strategies
 				Print("Distance    : " + (entryPrice - initialStop));
 
 
-				ExitLongStopMarket("Long", CalculationMode.Price, initialStop, false);
+				ExitLongStopMarket(
+				    initialStop,   // Stop price
+				    "Long Stop",   // Exit order name
+				    "Long");       // Attach to the "Long" entry
 
 				stopPlaced = true;
 
@@ -123,7 +126,10 @@ namespace NinjaTrader.NinjaScript.Strategies
 
 
 
-				ExitShortStopMarket("Short", CalculationMode.Price, initialStop, false);
+				ExitShortStopMarket(
+			    initialStop,   // Stop price
+			    "Short Stop",  // Exit order name
+			    "Short");      // Attach to the "Short" entry
 
 				stopPlaced = true;
 

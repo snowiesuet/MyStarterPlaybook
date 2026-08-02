@@ -1,4 +1,4 @@
-# ATRManagerV1
+# MyStartPlaybook
 Version: 0.2 (Architecture Phase)
 Platform: NinjaTrader 8
 Language: C#
